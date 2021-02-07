@@ -1,0 +1,106 @@
+﻿########################################################################
+# Processing Settings
+########################################################################
+
+# Enables file hash computation. To calculate multiple hashes use ; as separator
+# Possible values: md5, sha-1, sha-256, sha-512 and edonkey
+hash = md5; sha-256
+
+# Enables hash lookup on IPED database. Programs with status "Alert" can be modified in "conf/KFFTaskConfig.txt".
+# Need to enable hash md5 or sha-1.
+enableKff = false
+
+# Enables hash lookup on LED database. Files with hashes 
+# on the database can be queried with "Hash Alert (Child Porn)" filter.
+# Need to enable hash md5 or sha-1.
+enableLedWkff = false
+
+# Enables nudity detection. For each image it creates attributes "scoreNudez" (1 to 1000)
+# and classeNudez (1 to 5) for ranking and/or filtering.
+enableLedDie = false
+
+# Excludes from the processing (and from the case) ignorable files according to hash database.
+excludeKffIgnorable = false
+
+# Ignores/discards duplicated files from processing (and from the case)
+# It can strongly speed up processing of cases whith backups. Hash calculation must be enabled.
+ignoreDuplicates = false
+
+# Exports the properties of all files in the case to file "File Listing.csv"
+exportFileProps = true
+
+# Processes file signatures.
+processFileSignatures = true
+
+# Enables parsing of file contents. It's needed for several features like
+# container expansion, detection of encrypted content, metadata extraction, preview creation and so on.
+enableFileParsing = true
+
+# Expands containers, like compressed files, email boxes, emails and office documents.
+# File types to be expanded can be modified in "conf/CategoriesToExpand.txt"
+expandContainers = true
+
+# Searches extracted text from items for regular expressions 
+# like social numbers, emails, URLs, credit cards, money values and so.
+# New expressions can be configured in file "conf/RegexConfig.txt"
+enableRegexSearch = true
+
+# Enables detection of more than 70 idioms in document files.
+enableLanguageDetect = true
+
+# EXPERIMENTAL function to recognize named entities: names of people, organizations or places.
+# Language models must be downloaded and put in "optional-jars" folder.
+# Download language models from StanfordCoreNLP 3.8: https://stanfordnlp.github.io/CoreNLP/history.html
+# Model for Portuguese language has not been trained, so results may not be good.
+# This feature uses a lot of CPU, which can increase processing time up to 4x.
+# Advanced settings can be modified in file "conf/NamedEntityRecognitionConfig.txt"
+enableNamedEntityRecogniton = false
+
+# Indexes file contents. If disabled, indexes only file properties.
+indexFileContents = true
+
+# Index files with no specific decoder, like binaries, unknown, pagefile, unallocated, etc.
+# This option extracts and indexes printable Latin1, UTF8 or UTF16 strings mixed in files.
+indexUnknownFiles = true
+
+# Index corrupted files with strings. For example, deleted and partially overwritten images
+# can have searchable plain text into them.
+indexCorruptedFiles = true
+
+# Enables OCR in scanned images and PDFs. It can increase processing time in several orders of magnitude.
+# Results depend on image quality and resolution, and on font size and type.
+# Advanced OCR options can be modified in "conf/AdvancedConfig.txt"
+enableOCR = false
+
+# Adds and processes file slacks, using sleuthkit.
+addFileSlacks = false
+
+# Adds and processes unallocated blocks of images, using sleuthkit.
+addUnallocated = false
+
+# Added unallocated space will be indexed. "addUnallocated" and "indexUnknownFiles" must be enabled.
+indexUnallocated = false
+
+# Enables carving. "addUnallocated" must be enabled to unallocated areas be searched for.
+# By default carving runs on almost every items in the case. 
+# File types to be searched for and retrieved can be set in "conf/CarvingConfig.txt"
+enableCarving = false
+
+# Enables carving to retrieve known files from the LED hash database, based on the beginning (64K) of the files.
+# It's required to enable "addUnallocated" and to configure "ledWkffPath".
+enableKFFCarving = false
+
+# Enables custom carving of e-Mule "known.met" files. "addUnallocated" must be enabled.
+enableKnownMetCarving = false
+
+# Enables creation of image thumbnails while processing.
+# It can slow down processing, but speeds up image preview in the gallery
+enableImageThumbs = true
+
+# Enables extraction of image frames from video files.
+# Extraction settings can be modified in file "conf/VideoThumbsConfig.txt"
+enableVideoThumbs = true
+
+# Enables HTML report generation for automatic file extraction or from selected items.
+# Report settings can be modified in file "conf/HTMLReportConfig.txt"
+enableHTMLReport = true
